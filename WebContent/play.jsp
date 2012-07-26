@@ -1,19 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta charset=EUC-KR">
 <title>Play Lotto</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+    function load() {
+            var jq = $.get("lotto.jsp")
+                      .complete(function() {
+                                    $("#lotto").html(jq.responseText);
+                            });
+    }
+
+    $(function() {
+            $("#button").click(load);
+    });
+</script>
 </head>
 <body>
-	<% %>
+	<%
+		
+	%>
 	<div id="lotto"></div>
 	<form onsubmit="return false">
-		<input type="submit" value="대박" onclick="$('#lotto').load('lotto.jsp')">
-		<br />주의 : 중복된 숫자가 나올 수 있습니다. 
+		<input id="button" type="button" value="대박"> <br />주의 : 중복된 숫자가 나올 수
+		있습니다.
 	</form>
 </body>
 </html>
